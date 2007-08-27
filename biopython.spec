@@ -1,8 +1,8 @@
 Summary: The Biopython Project
 Name: biopython
-Version: 1.42
-Release: %mkrel 2
-Source0: http://biopython.org/files/%{name}-%{version}.tar.bz2
+Version: 1.43
+Release: %mkrel 1
+Source0: http://biopython.org/files/%{name}-%{version}.tar.gz
 License: BSD
 Group: Development/Python
 BuildRoot: %{_tmppath}/%{name}-buildroot
@@ -115,14 +115,14 @@ find -type f -exec dos2unix -U {} \;
 
 
 %build
-python setup.py build
+yes | python setup.py build
 
 # build api
-epydoc -o api Bio Martel BioSQL
+yes | epydoc -o api Bio Martel BioSQL
 
 
 %install
-python setup.py install --root=$RPM_BUILD_ROOT
+yes | python setup.py install --root=$RPM_BUILD_ROOT
 
 mkdir -p $RPM_BUILD_ROOT/%_datadir/%{name}-%{version} 
 cp -r Tests Scripts $RPM_BUILD_ROOT/%_datadir/%{name}-%{version}
