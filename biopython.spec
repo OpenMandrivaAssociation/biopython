@@ -5,7 +5,6 @@ Release: %mkrel 1
 Source0: http://biopython.org/files/%{name}-%{version}.tar.gz
 License: BSD
 Group: Development/Python
-BuildRoot: %{_tmppath}/%{name}-buildroot
 Url: http://www.biopython.org/
 BuildRequires: python-devel
 BuildRequires: python-numeric-devel python-numeric
