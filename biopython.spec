@@ -1,7 +1,7 @@
 Summary: The Biopython Project
 Name: biopython
 Version: 1.44
-Release: %mkrel 1
+Release: %mkrel 3
 Source0: http://biopython.org/files/%{name}-%{version}.tar.gz
 License: BSD
 Group: Development/Python
