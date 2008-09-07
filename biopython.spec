@@ -1,12 +1,12 @@
 Summary: The Biopython Project
 Name: biopython
-Version: 1.44
-Release: %mkrel 3
+Version: 1.47
+Release: %mkrel 1
 Source0: http://biopython.org/files/%{name}-%{version}.tar.gz
 License: BSD
 Group: Development/Python
 BuildRoot: %{_tmppath}/%{name}-buildroot
-Url: http://www.biopython.org/
+Url: http://biopython.org/
 BuildRequires: python-devel
 BuildRequires: python-numeric-devel python-numeric
 BuildRequires: egenix-mx-base
@@ -16,7 +16,7 @@ BuildRequires: epydoc
 BuildRequires: dos2unix
 
 %package -n python-Bio
-Summary: The Biopython Project
+Summary: Python modules from the Biopython Project
 Group: Sciences/Biology
 Requires: python-numeric
 Requires: python-reportlab
@@ -51,27 +51,20 @@ Group: Development/Python
 Requires: %{name} = %{version}
 
 %description
-     "The Biopython Project" - http://www.biopython.org/ is an
-international association of developers of freely available Python
-tools for computational molecular biology.
+The Biopython Project is an international association of developers of
+freely available Python tools for computational molecular biology.
 
-biopython.org provides an online resource for modules, scripts, and
-web links for developers of Python-based software for life science
-research.
+http://biopython.org provides an online resource for modules,
+scripts, and web links for developers of Python-based software for
+life science research.
 
 %description -n python-Bio
-     "The Biopython Project" - http://www.biopython.org/ is an
-international association of developers of freely available Python
-tools for computational molecular biology.
-
-biopython.org provides an online resource for modules, scripts, and
-web links for developers of Python-based software for life science
-research.
+This package provides various Python modules from the Biopython Project 
+used to process biological data.
 
 %description tools
-     "The Biopython Project" - http://www.biopython.org/ is an
-international association of developers of freely available Python
-tools for computational molecular biology.
+This package provides various scripts and tests that are comprised by the
+Biopython Project.
 
 %description -n python-Martel
 Martel uses a modified form of the Perl regular expression language to 
@@ -95,14 +88,8 @@ Entries stored through an application written in, say, Bioperl could
 be retrieved by another written in Biojava.
 
 %description doc
-     "The Biopython Project" - http://www.biopython.org/ is an
-international association of developers of freely available Python
-tools for computational molecular biology.
-
-biopython.org provides an online resource for modules, scripts, and
-web links for developers of Python-based software for life science
-research.
-
+This package provides the documentation for the various components of the 
+Biopython Project.
 
 %prep
 %setup -q
@@ -113,21 +100,17 @@ find -type d -name CVS | xargs rm -rf
 # convert wrong end of line
 find -type f -exec dos2unix -U {} \;
 
-
 %build
 yes | python setup.py build
 
 # build api
 yes | epydoc -o api Bio Martel BioSQL
 
-
 %install
 yes | python setup.py install --root=$RPM_BUILD_ROOT
 
 mkdir -p $RPM_BUILD_ROOT/%_datadir/%{name}-%{version} 
 cp -r Tests Scripts $RPM_BUILD_ROOT/%_datadir/%{name}-%{version}
-
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -138,12 +121,10 @@ rm -rf $RPM_BUILD_ROOT
 %py_platsitedir/*.5.egg-info
 %doc CONTRIB LICENSE NEWS README
 
-
 %files tools
 %defattr(-,root,root,0755)
 %_datadir/%{name}-%{version}/Tests
 %_datadir/%{name}-%{version}/Scripts
-
 
 %files -n python-Martel
 %defattr(-,root,root,0755)
