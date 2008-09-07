@@ -14,6 +14,7 @@ BuildRequires: python-reportlab
 BuildRequires: gcc
 BuildRequires: epydoc
 BuildRequires: dos2unix
+BuildRequires: pdftk
 
 %package -n python-Bio
 Summary: Python modules from the Biopython Project
