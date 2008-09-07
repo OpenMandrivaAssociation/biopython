@@ -106,6 +106,10 @@ yes | python setup.py build
 # build api
 yes | epydoc -o api Bio Martel BioSQL
 
+# fix broken tutorial file
+mv Doc/Tutorial.pdf Doc/_Tutorial.pdf
+pdftk Doc/_Tutorial.pdf output Doc/Tutorial.pdf
+
 %install
 yes | python setup.py install --root=$RPM_BUILD_ROOT
 
@@ -131,7 +135,6 @@ rm -rf $RPM_BUILD_ROOT
 %py_platsitedir/Martel
 %doc LICENSE
 
-
 %files -n python-BioSQL
 %defattr(-,root,root,0755)
 %py_platsitedir/BioSQL
@@ -139,7 +142,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files doc
 %defattr(-,root,root,0755)
-%doc Doc/*
+%doc Doc/*.pdf Doc/examples/ Doc/cookbook/*/*.pdf
 %doc api
-
-
