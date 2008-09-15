@@ -1,7 +1,7 @@
 Summary: The Biopython Project
 Name: biopython
 Version: 1.47
-Release: %mkrel 1
+Release: %mkrel 2
 Source0: http://biopython.org/files/%{name}-%{version}.tar.gz
 License: BSD
 Group: Development/Python
@@ -14,7 +14,6 @@ BuildRequires: python-reportlab
 BuildRequires: gcc
 BuildRequires: epydoc
 BuildRequires: dos2unix
-BuildRequires: pdftk
 
 %package -n python-Bio
 Summary: Python modules from the Biopython Project
@@ -99,17 +98,13 @@ rm -f Tests/CodonUsage/.DS_Store
 # remove CVS dirs
 find -type d -name CVS | xargs rm -rf 
 # convert wrong end of line
-find -type f -exec dos2unix -U {} \;
+find -type f -exec dos2unix -b -U {} \;
 
 %build
 yes | python setup.py build
 
 # build api
 yes | epydoc -o api Bio Martel BioSQL
-
-# fix broken tutorial file
-mv Doc/Tutorial.pdf Doc/_Tutorial.pdf
-pdftk Doc/_Tutorial.pdf output Doc/Tutorial.pdf
 
 %install
 yes | python setup.py install --root=$RPM_BUILD_ROOT
