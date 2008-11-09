@@ -1,54 +1,56 @@
-Summary: The Biopython Project
-Name: biopython
-Version: 1.47
-Release: %mkrel 2
-Source0: http://biopython.org/files/%{name}-%{version}.tar.gz
-License: BSD
-Group: Development/Python
-BuildRoot: %{_tmppath}/%{name}-buildroot
-Url: http://biopython.org/
-BuildRequires: python-devel
-BuildRequires: python-numeric-devel python-numeric
-BuildRequires: egenix-mx-base
-BuildRequires: python-reportlab
-BuildRequires: gcc
-BuildRequires: epydoc
-BuildRequires: dos2unix
+%define name	biopython
+%define	version	1.49b
+%define	release	1
 
-%package -n python-Bio
-Summary: Python modules from the Biopython Project
-Group: Sciences/Biology
-Requires: python-numeric
-Requires: python-reportlab
-Requires: egenix-mx-base
-Requires: python-Martel = %{version}
-Provides: biopython = %{version}
-Obsoletes: biopython
+Summary:	The Biopython Project
+Name:		%{name}
+Version:	%{version}
+Release:	%mkrel %{release}
+Source0:	http://biopython.org/files/%{name}-%{version}.tar.gz
+License:	BSD
+Group:		Development/Python
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+Url:		http://biopython.org/
+Requires:	python-numpy
+BuildRequires:	egenix-mx-base
+BuildRequires:	python-reportlab, python-numpy, python-numpy-devel
+BuildRequires:	gcc, epydoc, dos2unix
+%py_requires -d
 
-%package tools
-Summary: Regression testing code and miscellaneous, possibly useful, standalone scripts
-Requires: %{name} = %{version}
-Group: Sciences/Biology
+%package -n 	python-Bio
+Summary: 	Python modules from the Biopython Project
+Group:		Sciences/Biology
+Requires:	python-numpy
+Requires:	python-reportlab
+Requires:	egenix-mx-base
+Requires:	python-Martel = %{version}
+Provides:	biopython = %{version}
+Obsoletes:	biopython
 
-%package -n python-Martel
-Summary: Biopython parser generator
-Group: Development/Python
-Provides: biopython-martel = %{version}
-Obsoletes: biopython-martel
+%package 	tools
+Summary: 	Regression testing code and miscellaneous, possibly useful, standalone scripts
+Requires:	%{name} = %{version}
+Group:		Sciences/Biology
 
-%package -n python-BioSQL
-Summary: Code for using Biopython with BioSQL databases
-Requires: %{name} = %{version}
-Group: Development/Python
-Requires: pyPgSQL
-Requires: MySQL-python
-Provides: biopython-biosql = %{version}
-Obsoletes: biopython-biosql
+%package -n	python-Martel
+Summary:	Biopython parser generator
+Group:		Development/Python
+Provides:	biopython-martel = %{version}
+Obsoletes:	biopython-martel
 
-%package doc
-Summary: The Biopython Project documentation
-Group: Development/Python
-Requires: %{name} = %{version}
+%package -n	python-BioSQL
+Summary:	Code for using Biopython with BioSQL databases
+Requires:	%{name} = %{version}
+Group:		Development/Python
+Requires:	pyPgSQL
+Requires:	MySQL-python
+Provides:	biopython-biosql = %{version}
+Obsoletes:	biopython-biosql
+
+%package	doc
+Summary:	The Biopython Project documentation
+Group:		Development/Python
+Requires:	%{name} = %{version}
 
 %description
 The Biopython Project is an international association of developers of
