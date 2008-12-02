@@ -1,5 +1,7 @@
+%define epoch	1
+
 %define name	biopython
-%define	version	1.49b
+%define	version	1.49
 %define	release	1
 
 Summary:	The Biopython Project
@@ -23,18 +25,24 @@ Group:		Sciences/Biology
 Requires:	python-numpy
 Requires:	python-reportlab
 Requires:	egenix-mx-base
+Requires:	wise
+Requires:	ncbi-blast
+# don't explicitly require clustalw because it is non-free
+Suggests:	clustalw
 Requires:	python-Martel = %{version}
 Provides:	biopython = %{version}
 Obsoletes:	biopython
 
 %package 	tools
-Summary: 	Regression testing code and miscellaneous, possibly useful, standalone scripts
+Summary: 	Regression testing code and miscellaneous standalone scripts
 Requires:	%{name} = %{version}
+Suggests:	tkinter, wxPython
 Group:		Sciences/Biology
 
 %package -n	python-Martel
 Summary:	Biopython parser generator
 Group:		Development/Python
+Requires:	python-egenix-mx-base
 Provides:	biopython-martel = %{version}
 Obsoletes:	biopython-martel
 
@@ -42,8 +50,8 @@ Obsoletes:	biopython-martel
 Summary:	Code for using Biopython with BioSQL databases
 Requires:	%{name} = %{version}
 Group:		Development/Python
-Requires:	pyPgSQL
-Requires:	MySQL-python
+Requires:	python-psycopg
+Requires:	python-mysql
 Provides:	biopython-biosql = %{version}
 Obsoletes:	biopython-biosql
 
@@ -96,6 +104,7 @@ Biopython Project.
 %prep
 %setup -q
 
+# remove Mac-related files
 rm -f Tests/CodonUsage/.DS_Store
 # remove CVS dirs
 find -type d -name CVS | xargs rm -rf 
@@ -109,19 +118,19 @@ yes | python setup.py build
 yes | epydoc -o api Bio Martel BioSQL
 
 %install
-yes | python setup.py install --root=$RPM_BUILD_ROOT
+yes | python setup.py install --root=%{buildroot}
 
-mkdir -p $RPM_BUILD_ROOT/%_datadir/%{name}-%{version} 
-cp -r Tests Scripts $RPM_BUILD_ROOT/%_datadir/%{name}-%{version}
+mkdir -p %{buildroot}/%_datadir/%{name}-%{version} 
+cp -r Tests Scripts %{buildroot}/%_datadir/%{name}-%{version}
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+%__rm -rf %{buildroot}
 
 %files -n python-Bio
 %defattr(-,root,root,0755)
 %py_platsitedir/Bio
 %py_platsitedir/*.5.egg-info
-%doc CONTRIB LICENSE NEWS README
+%doc CONTRIB DEPRECATED LICENSE NEWS README
 
 %files tools
 %defattr(-,root,root,0755)
