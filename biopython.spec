@@ -8,6 +8,7 @@ Summary:	The Biopython Project
 Name:		%{name}
 Version:	%{version}
 Release:	%mkrel %{release}
+Epoch:		%{epoch}
 Source0:	http://biopython.org/files/%{name}-%{version}.tar.gz
 License:	BSD
 Group:		Development/Python
