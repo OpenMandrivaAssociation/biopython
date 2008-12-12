@@ -2,7 +2,7 @@
 
 %define name	biopython
 %define	version	1.49
-%define	release	1
+%define	release	2
 
 Summary:	The Biopython Project
 Name:		%{name}
@@ -12,7 +12,7 @@ Epoch:		%{epoch}
 Source0:	http://biopython.org/files/%{name}-%{version}.tar.gz
 License:	BSD
 Group:		Development/Python
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Url:		http://biopython.org/
 Requires:	python-numpy
 BuildRequires:	egenix-mx-base
@@ -30,13 +30,13 @@ Requires:	wise
 Requires:	ncbi-blast
 # don't explicitly require clustalw because it is non-free
 Suggests:	clustalw
-Requires:	python-Martel = %{version}
-Provides:	biopython = %{version}
+Requires:	python-Martel = %{epoch}:%{version}-%{release}
+Provides:	biopython = %{epoch}:%{version}-%{release}
 Obsoletes:	biopython
 
 %package 	tools
 Summary: 	Regression testing code and miscellaneous standalone scripts
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 Suggests:	tkinter, wxPython
 Group:		Sciences/Biology
 
@@ -44,7 +44,7 @@ Group:		Sciences/Biology
 Summary:	Biopython parser generator
 Group:		Development/Python
 Requires:	python-egenix-mx-base
-Provides:	biopython-martel = %{version}
+Provides:	biopython-martel = %{epoch}:%{version}-%{release}
 Obsoletes:	biopython-martel
 
 %package -n	python-BioSQL
@@ -53,13 +53,12 @@ Requires:	%{name} = %{version}
 Group:		Development/Python
 Requires:	python-psycopg
 Requires:	python-mysql
-Provides:	biopython-biosql = %{version}
-Obsoletes:	biopython-biosql
+Provides:	biopython-biosql = %{epoch}:%{version}-%{release}
 
 %package	doc
 Summary:	The Biopython Project documentation
 Group:		Development/Python
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description
 The Biopython Project is an international association of developers of
