@@ -2,7 +2,7 @@
 
 %define name	biopython
 %define	version	1.49
-%define	release	2
+%define	release	3
 
 Summary:	The Biopython Project
 Name:		%{name}
@@ -49,7 +49,7 @@ Obsoletes:	biopython-martel
 
 %package -n	python-BioSQL
 Summary:	Code for using Biopython with BioSQL databases
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 Group:		Development/Python
 Requires:	python-psycopg
 Requires:	python-mysql
