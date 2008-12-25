@@ -2,7 +2,7 @@
 
 %define name	biopython
 %define	version	1.49
-%define	release	3
+%define	release	4
 
 Summary:	The Biopython Project
 Name:		%{name}
