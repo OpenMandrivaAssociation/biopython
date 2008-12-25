@@ -129,7 +129,7 @@ cp -r Tests Scripts %{buildroot}/%_datadir/%{name}-%{version}
 %files -n python-Bio
 %defattr(-,root,root,0755)
 %py_platsitedir/Bio
-%py_platsitedir/*.5.egg-info
+%py_platsitedir/*.egg-info
 %doc CONTRIB DEPRECATED LICENSE NEWS README
 
 %files tools
