@@ -1,8 +1,8 @@
 %define epoch	1
 
 %define name	biopython
-%define	version	1.49
-%define	release	4
+%define	version	1.50
+%define	release	1
 
 Summary:	The Biopython Project
 Name:		%{name}
@@ -132,11 +132,6 @@ cp -r Tests Scripts %{buildroot}/%_datadir/%{name}-%{version}
 %py_platsitedir/*.egg-info
 %doc CONTRIB DEPRECATED LICENSE NEWS README
 
-%files tools
-%defattr(-,root,root,0755)
-%_datadir/%{name}-%{version}/Tests
-%_datadir/%{name}-%{version}/Scripts
-
 %files -n python-Martel
 %defattr(-,root,root,0755)
 %py_platsitedir/Martel
@@ -147,7 +142,12 @@ cp -r Tests Scripts %{buildroot}/%_datadir/%{name}-%{version}
 %py_platsitedir/BioSQL
 %doc LICENSE
 
+%files tools
+%defattr(-,root,root,0755)
+%_datadir/%{name}-%{version}/Tests
+%_datadir/%{name}-%{version}/Scripts
+
 %files doc
 %defattr(-,root,root,0755)
-%doc Doc/*.pdf Doc/examples/ Doc/cookbook/*/*.pdf
+%doc Doc/*.pdf Doc/examples/
 %doc api
