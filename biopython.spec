@@ -1,7 +1,7 @@
 %define epoch	1
 
 %define name	biopython
-%define	version	1.50
+%define	version	1.51
 %define	release	1
 
 Summary:	The Biopython Project
@@ -30,7 +30,6 @@ Requires:	wise
 Requires:	ncbi-blast
 # don't explicitly require clustalw because it is non-free
 Suggests:	clustalw
-Requires:	python-Martel = %{epoch}:%{version}-%{release}
 Provides:	biopython = %{epoch}:%{version}-%{release}
 Obsoletes:	biopython
 
@@ -40,18 +39,11 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 Suggests:	tkinter, wxPython
 Group:		Sciences/Biology
 
-%package -n	python-Martel
-Summary:	Biopython parser generator
-Group:		Development/Python
-Requires:	python-egenix-mx-base
-Provides:	biopython-martel = %{epoch}:%{version}-%{release}
-Obsoletes:	biopython-martel
-
 %package -n	python-BioSQL
 Summary:	Code for using Biopython with BioSQL databases
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Group:		Development/Python
-Requires:	python-psycopg
+Requires:	python-psycopg2
 Requires:	python-mysql
 Provides:	biopython-biosql = %{epoch}:%{version}-%{release}
 
@@ -75,21 +67,6 @@ used to process biological data.
 %description tools
 This package provides various scripts and tests that are comprised by the
 Biopython Project.
-
-%description -n python-Martel
-Martel uses a modified form of the Perl regular expression language to 
-describe the format of a file. The definition is used to generate a 
-parser for that format. An input file is converted into a parse tree, 
-which is traversed in prefix order to generate SAX 2.0 events, as used 
-in XML processing. Element names and attributes are specified in the 
-regular expression grammar using the named group extension popularized 
-by Python. 
-
-The events can be used by any SAX handler. Some of the common handlers 
-can: build a DOM tree or any other data structures, load an XML database,
-identify specific data fields (accession number, sequence, cross 
-reference), find the record start and end positions, and drive an XSL 
-transformation. 
 
 %description -n python-BioSQL
 BioSQL is meant to be a common data storage layer supported by all the
@@ -115,7 +92,7 @@ find -type f -exec dos2unix -b -U {} \;
 yes | python setup.py build
 
 # build api
-yes | epydoc -o api Bio Martel BioSQL
+yes | epydoc -o api Bio BioSQL
 
 %install
 yes | python setup.py install --root=%{buildroot}
@@ -131,11 +108,6 @@ cp -r Tests Scripts %{buildroot}/%_datadir/%{name}-%{version}
 %py_platsitedir/Bio
 %py_platsitedir/*.egg-info
 %doc CONTRIB DEPRECATED LICENSE NEWS README
-
-%files -n python-Martel
-%defattr(-,root,root,0755)
-%py_platsitedir/Martel
-%doc LICENSE
 
 %files -n python-BioSQL
 %defattr(-,root,root,0755)
