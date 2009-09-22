@@ -1,7 +1,7 @@
 %define epoch	1
 
 %define name	biopython
-%define	version	1.51
+%define	version	1.52
 %define	release	1
 
 Summary:	The Biopython Project
