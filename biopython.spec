@@ -1,7 +1,7 @@
 %define epoch	1
 
 %define name	biopython
-%define	version	1.52
+%define	version	1.53
 %define	release	1
 
 Summary:	The Biopython Project
@@ -123,3 +123,4 @@ cp -r Tests Scripts %{buildroot}/%_datadir/%{name}-%{version}
 %defattr(-,root,root,0755)
 %doc Doc/*.pdf Doc/examples/
 %doc api
+
