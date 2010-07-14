@@ -1,7 +1,7 @@
 %define epoch	1
 
 %define name	biopython
-%define	version	1.53
+%define	version	1.54
 %define	release	1
 
 Summary:	The Biopython Project
@@ -16,6 +16,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Url:		http://biopython.org/
 Requires:	python-numpy
 BuildRequires:	egenix-mx-base
+BuildRequires:	flex
 BuildRequires:	python-reportlab, python-numpy, python-numpy-devel
 BuildRequires:	gcc, epydoc, dos2unix
 %py_requires -d
