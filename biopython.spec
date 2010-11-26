@@ -1,8 +1,8 @@
 %define epoch	1
 
 %define name	biopython
-%define	version	1.55
-%define	release	2
+%define	version	1.56
+%define	release	1
 
 Summary:	The Biopython Project
 Name:		%{name}
@@ -90,13 +90,13 @@ find -type d -name CVS | xargs rm -rf
 find -type f -exec dos2unix -b -U {} \;
 
 %build
-yes | python setup.py build
+yes | PYTHONDONTWRITEBYTECODE= python setup.py build
 
 # build api
 yes | epydoc -o api Bio BioSQL
 
 %install
-yes | python setup.py install --root=%{buildroot}
+yes | PYTHONDONTWRITEBYTECODE= python setup.py install --root=%{buildroot}
 
 mkdir -p %{buildroot}/%_datadir/%{name}-%{version} 
 cp -r Tests Scripts %{buildroot}/%_datadir/%{name}-%{version}
