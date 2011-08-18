@@ -10,6 +10,7 @@ Version:	%{version}
 Release:	%mkrel %{release}
 Epoch:		%{epoch}
 Source0:	http://biopython.org/files/%{name}-%{version}.tar.gz
+Patch0:		lm-1.58.patch
 License:	BSD
 Group:		Development/Python
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -81,6 +82,7 @@ Biopython Project.
 
 %prep
 %setup -q
+%patch0 -p0
 
 # remove Mac-related files
 rm -f Tests/CodonUsage/.DS_Store
