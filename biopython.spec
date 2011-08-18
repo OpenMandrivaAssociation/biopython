@@ -1,7 +1,7 @@
 %define epoch	1
 
 %define name	biopython
-%define	version	1.56
+%define	version	1.58
 %define	release	1
 
 Summary:	The Biopython Project
@@ -93,6 +93,7 @@ find -type f -exec dos2unix -b -U {} \;
 yes | PYTHONDONTWRITEBYTECODE= python setup.py build
 
 # build api
+export PYTHONPATH=`dir -d build/lib.*`
 yes | epydoc -o api Bio BioSQL
 
 %install
