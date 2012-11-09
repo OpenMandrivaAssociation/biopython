@@ -1,0 +1,17 @@
+--- setup.py.bak	2011-08-18 13:58:51.511692675 -0400
++++ setup.py	2011-08-18 14:00:36.184053241 -0400
+@@ -325,12 +325,14 @@
+                   ['Bio/Cluster/clustermodule.c',
+                    'Bio/Cluster/cluster.c'],
+                   include_dirs=[numpy_include_dir],
++		  libraries=['m']
+                   ))
+     EXTENSIONS.append(
+         Extension('Bio.KDTree._CKDTree',
+                   ["Bio/KDTree/KDTree.c",
+                    "Bio/KDTree/KDTreemodule.c"],
+                   include_dirs=[numpy_include_dir],
++		  libraries=['m']
+                   ))
+     EXTENSIONS.append(
+         Extension('Bio.Motif._pwm',
