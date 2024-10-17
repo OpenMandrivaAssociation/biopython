@@ -14,7 +14,7 @@ Patch0:		lm-1.58.patch
 License:	BSD
 Group:		Development/Python
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Url:		http://biopython.org/
+Url:		https://biopython.org/
 Requires:	python-numpy
 BuildRequires:	egenix-mx-base
 BuildRequires:	flex
