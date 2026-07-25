@@ -2,12 +2,12 @@
 
 %define name	biopython
 %define	version	1.58
-%define	release	1
+%define	release 2
 
 Summary:	The Biopython Project
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel %{release}
+Release:	%{release}.1
 Epoch:		%{epoch}
 Source0:	http://biopython.org/files/%{name}-%{version}.tar.gz
 Patch0:		lm-1.58.patch
